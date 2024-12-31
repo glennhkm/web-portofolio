@@ -37,7 +37,8 @@ const config: Config = {
         foreground: "var(--foreground)",
         primary: "#1d1d1d",
         secondary: "#FFDE4D" ,
-        third: "#32a2b0"
+        third: "#32a2b0",
+        thirdAlternative: "#255257",
       },
       screens: {
         "xs": "376px",
