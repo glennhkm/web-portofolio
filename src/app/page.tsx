@@ -93,7 +93,7 @@ const Home = () => {
             />
           </div>
           {isMobile && (
-            <Marquee className="lg:absolute lg:bottom-0 left-0 flex gap-8 items-center pt-4 pb-2 xs:pt-6 xs:pb-3 w-full -z-20" direction="left" speed={80}>
+            <Marquee className="lg:absolute lg:bottom-0 left-0 flex gap-8 items-center py-4 w-full -z-20" direction="left" speed={80}>
              <div className={`flex gap-8 font-moderniz text-primary items-center`}>               
               <p className="font-extrabold text-lg xs:text-2xl uppercase text-white">Main Tech</p>
               <div className="flex gap-4"> 
@@ -127,9 +127,9 @@ const Home = () => {
         </div>
         {(isDesktop || isMobile) && (
           <div className={`w-full absolute bottom-0 border-t-[1px] border-white/20 h-[20%] lg:h-[26%] bg-primary z-[80]`}>
-           <Marquee className="w-full h-full" speed={50} pauseOnHover>
+           <Marquee className="w-full h-full" speed={50} pauseOnHover={isDesktop || false} pauseOnClick={isMobile || false} direction="left">
             <div id="EducationAndHimpunan" className="flex gap-4 text-8xl font-bold relative mx-11">
-              <div onMouseOver={() => setEducationCard(1)} className={`${educationCard !== 1 ? '-z-10' : 'z-10'} hover:scale-110 duration-200 cursor-pointer px-7 h-[6.2rem] xs:h-32 absolute top-0 -left-20 border flex items-center bg-primary border-white/30 shadow-md shadow-black rounded-full gap-4`}>
+              <div onMouseOver={() => isDesktop && setEducationCard(1)} onClick={() => isMobile && setEducationCard(1)} className={`${educationCard !== 1 ? '-z-10' : 'z-10'} active:scale-110 lg:hover:scale-110 duration-200 cursor-pointer px-7 h-[6.2rem] xs:h-32 absolute top-0 -left-20 border flex items-center bg-primary border-white/30 shadow-md shadow-black rounded-full gap-4`}>
                 <Image
                   src="/images/HMIF.png"
                   alt="logo-usk"
@@ -146,7 +146,7 @@ const Home = () => {
                   </div>
                 </div>    
               </div>          
-              <div onMouseOver={() => setEducationCard(0)} className={`hover:scale-110 duration-200 cursor-pointer px-7 h-[6.2rem] xs:h-32 border bg-primary border-white/30 shadow-md shadow-black rounded-full flex gap-4 items-center`}>
+              <div onMouseOver={() => setEducationCard(0)} onClick={() => isMobile && setEducationCard(0)} className={`active:scale-110 lg:hover:scale-110 duration-200 cursor-pointer px-7 h-[6.2rem] xs:h-32 border bg-primary border-white/30 shadow-md shadow-black rounded-full flex gap-4 items-center`}>
                 <div className="flex gap-1.5">
                  <Image
                   src="/images/usk-logo-1.png"
@@ -193,9 +193,9 @@ const Home = () => {
                 </div>
               </div>
             </div>          
-            <div id="WorkExperiences" className={`flex flex-col gap-2 xs:gap-3 mx-11 overflow-visible`}>
+            <div id="WorkExperiences" className={`flex flex-col gap-2 xs:gap-3 mx-11 overflow`}>
               <p className="font-bold text-lg xs:text-2xl text-third">Work Experiences</p>
-              <div className="flex gap-4 overflow-visible">
+              <div className="flex gap-4 overflow">
                 <AnimatedTooltip items={WorkExperiences}/>
               </div>
             </div>
@@ -203,8 +203,8 @@ const Home = () => {
               {isDesktop && (
                 <CircularText 
                   text="Let’s build something amazing! • " 
-                  spacing={1.4}
-                  size={1.4}
+                  spacing={1.2}
+                  size={1.2}
                 />
               )}
               {isMobile && (
@@ -214,7 +214,7 @@ const Home = () => {
                   size={1.06}
                 />
               )}
-              <button onMouseOver={() => setIsMailOpen(true)} onMouseLeave={() => setIsMailOpen(false)} className="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 border border-secondary p-5 xs:p-6 lg:p-8 rounded-full shadow-md shadow-black hover:bg-secondary duration-300">
+              <button onMouseOver={() => setIsMailOpen(true)} onMouseLeave={() => setIsMailOpen(false)} className="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 border border-secondary p-5 xs:p-6 lg:p-8` rounded-full shadow-md shadow-black hover:bg-secondary duration-300">
                 {isMailOpen ? (
                   <MailOpen className="text-primary w-6 h-6 xs:w-8 xs:h-8"/>
                 ) : (
