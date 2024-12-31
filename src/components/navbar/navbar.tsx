@@ -29,7 +29,6 @@ export const Navbar = () => {
     if (typeof window !== "undefined") {
       window.addEventListener("scroll", controlNavbar);
 
-      // cleanup function
       return () => {
         window.removeEventListener("scroll", controlNavbar);
       };
@@ -52,7 +51,7 @@ export const Navbar = () => {
         {isOpen ? (
           <>
             {menuItems.map((item, index) => (
-              <Link key={index} href={item.link} className={`hover:scale-[1.08] duration-200 `}>
+              <Link key={index} href={item.link} className={`hover:scale-[1.08] duration-200 flex items-center `}>
                 {item.name}
               </Link>  
             ))}
