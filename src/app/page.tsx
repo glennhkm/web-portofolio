@@ -8,7 +8,7 @@ import { Navbar } from "@/components/navbar/navbar";
 import { WorkExperiences } from "@/data/workExperiences";
 import { useScreenSize } from "@/hooks/screenSizeValidation";
 import { geistMono } from "@/lib/fonts/getFonts";
-import { ArrowRight, Mail, MailOpen } from "lucide-react";
+import { ArrowRight, Mail, MailOpen, Pause, Play } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import Marquee from "react-fast-marquee";
@@ -19,6 +19,7 @@ const Home = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [educationCard, setEducationCard] = useState(0);
   const [isMailOpen, setIsMailOpen] = useState(false);
+  const [isPlayMarquee, setIsPlayMarquee] = useState(true);
 
   useEffect(() => {
     setTimeout(() => {
@@ -125,106 +126,111 @@ const Home = () => {
             </div>
           )}
         </div>
-        {(isDesktop || isMobile) && (
-          <div className={`w-full absolute bottom-0 border-t-[1px] border-white/20 h-[20%] lg:h-[26%] bg-primary z-[80]`}>
-           <Marquee className="w-full h-full overflow-y-hidden" speed={50} pauseOnHover={isDesktop || false} pauseOnClick={isMobile || false} direction="left">
-            <div id="EducationAndHimpunan" className="flex gap-4 text-8xl font-bold relative mx-8 lg:mx-11">
-              <div onMouseOver={() => isDesktop && setEducationCard(1)} onClick={() => isMobile && setEducationCard(1)} className={`${educationCard !== 1 ? '-z-10' : 'z-10'} active:scale-110 lg:active:scale-110 lg:hover:scale-110 duration-200 cursor-pointer px-7 h-[6.2rem] xs:h-32 absolute top-0 -left-20 border flex items-center bg-primary border-white/30 shadow-md shadow-black rounded-full gap-4`}>
+        <div className={`w-full absolute bottom-0 border-t-[1px] border-white/20 h-[20%] lg:h-[26%] bg-primary z-[80]`}>
+          <button onClick={() => setIsPlayMarquee((prev) => !prev)} className="absolute -top-[2.04rem] bg-secondary shadow-balance shadow-secondary rounded-tr-xl p-2 ">
+            {isPlayMarquee ? (
+              <Pause className="text-primary w-4 h-4"/>
+            ) : (
+              <Play className="text-primary w-4 h-4"/>
+            )}
+          </button>
+          <Marquee play={isPlayMarquee} className="w-full h-full overflow-y-hidden" speed={60} direction="left">
+           <div id="EducationAndHimpunan" className="flex gap-4 text-8xl font-bold relative mx-8 lg:mx-11">
+             <div onMouseOver={() => isDesktop && setEducationCard(1)} onClick={() => isMobile && setEducationCard(1)} className={`${educationCard !== 1 ? '-z-10' : 'z-10'} active:scale-110 lg:active:scale-110 lg:hover:scale-110 duration-200 cursor-pointer px-7 h-[6.2rem] xs:h-32 absolute top-0 -left-20 border flex items-center bg-primary border-white/30 shadow-md shadow-black rounded-full gap-4`}>
+               <Image
+                 src="/images/HMIF.png"
+                 alt="logo-usk"
+                 width={500}
+                 height={500}
+                 className="w-10 xs:w-14 lg:w-[3.9rem] object-contain"
+               />
+               <div className={`flex flex-col gap-1 text-sm `}>
+                 <p className="font-bold text-xs lg:text-sm">Himpunan Mahasiswa Informatika USK</p>
+                 <div className="h-[1px] w-full bg-white/20 my-0.5"></div>
+                 <div className="flex gap-2.5 items-center">
+                   <LeaderIcon className="w-5 h-5 xs:w-6 xs:h-6"/>
+                   <p className="text-sm lg:text-xl font-bold ">Chairman 2024/2025</p>
+                 </div>
+               </div>    
+             </div>          
+             <div onMouseOver={() => setEducationCard(0)} onClick={() => isMobile && setEducationCard(0)} className={`active:scale-110 lg:active:scale-110 lg:hover:scale-110 duration-200 cursor-pointer px-7 h-[6.2rem] xs:h-32 border bg-primary border-white/30 shadow-md shadow-black rounded-full flex gap-4 items-center`}>
+               <div className="flex gap-1.5">
                 <Image
-                  src="/images/HMIF.png"
-                  alt="logo-usk"
-                  width={500}
-                  height={500}
-                  className="w-14 xs:w-[3.9rem] object-contain"
+                 src="/images/usk-logo-1.png"
+                 alt="logo-usk"
+                 width={500}
+                 height={500}
+                 className="w-10 xs:w-14 lg:w-[3.9rem] object-contain"
                 />
-                <div className={`flex flex-col gap-1 text-sm `}>
-                  <p className="font-bold text-xs xs:text-sm">Himpunan Mahasiswa Informatika USK</p>
-                  <div className="h-[1px] w-full bg-white/20 my-0.5"></div>
-                  <div className="flex gap-2.5 items-center">
-                    <LeaderIcon className="w-5 h-5 xs:w-6 xs:h-6"/>
-                    <p className="text-sm xs:text-xl font-bold ">Chairman 2024/2025</p>
-                  </div>
-                </div>    
-              </div>          
-              <div onMouseOver={() => setEducationCard(0)} onClick={() => isMobile && setEducationCard(0)} className={`active:scale-110 lg:active:scale-110 lg:hover:scale-110 duration-200 cursor-pointer px-7 h-[6.2rem] xs:h-32 border bg-primary border-white/30 shadow-md shadow-black rounded-full flex gap-4 items-center`}>
-                <div className="flex gap-1.5">
-                 <Image
-                  src="/images/usk-logo-1.png"
-                  alt="logo-usk"
-                  width={500}
-                  height={500}
-                  className="w-14 xs:w-20 lg:w-[3.9rem] object-contain"
-                 />
-                 <Image
-                  src="/images/logo-usk-typo.png"
-                  alt="logo-usk-typo"
-                  width={500}
-                  height={500}
-                  className="w-14 xs:w-20 object-contain invert"
-                 />
-                </div>
-                <div className={`flex flex-col gap-1 text-sm `}>
-                  <p className={`font-bold text-sm`}>Syiah Kuala University</p>
-                  <div className="h-[1px] w-full bg-white/20 my-0.5"></div>
-                  <p className="text-xs font-bold">Informatics <span className="font-light text-xs">Bachelor Degree</span></p>
-                  <p className="text-xs font-light">Last GPA: <span className="font-bold">3.44 / 4</span></p>
-                </div>    
-              </div>            
-            </div>
-            <div id="Projects" className="flex gap-6 mx-8 lg:mx-11">
-              <div className="w-60 xs:w-72 lg:w-80 rounded-3xl border border-white/20 relative flex items-center shadow-md shadow-black">
-                <Marquee speed={60} className="flex gap-4" pauseOnClick direction="right">
-                  <div className="flex gap-4">
-                    <div className="w-28 xs:w-40 rounded-xl h-14 xs:h-20 bg-white -z-30"></div>
-                    <div className="w-28 xs:w-40 rounded-xl h-14 xs:h-20 bg-white -z-30"></div>
-                    <div className="w-28 xs:w-40 rounded-xl h-14 xs:h-20 bg-white -z-30"></div>
-                    <div className="w-28 xs:w-40 rounded-xl h-14 xs:h-20 bg-white -z-30"></div>
-                  </div>
-                </Marquee>
-              </div>
-              <div className="flex flex-col gap-1 justify-between">
-                <p className="font-semibold text-base xs:text-2xl text-secondary">Projects</p>
-                <p className="font-light text-[0.65rem] xs:text-xs w-40">Explore these projects to see how I can assist you further.</p>
-                <div className="flex gap-3 items-center cursor-pointer">
-                  <button className="bg-secondary rounded-full p-1 shadow-md shadow-black border-2 border-white/40">
-                    <ArrowRight className="text-primary w-4 h-4" />
-                  </button>
-                  <p className="font-semibold text-xs text-secondary">Learn More</p>
-                </div>
-              </div>
-            </div>          
-            <div id="WorkExperiences" className={`flex flex-col gap-2 xs:gap-3 mx-8 lg:mx-11`}>
-              <p className="font-bold text-lg xs:text-2xl text-third">Work Experiences</p>
-              <div className="flex gap-4">
-                <AnimatedTooltip items={WorkExperiences}/>
-              </div>
-            </div>
-            <div id="GetInTouch" className="flex gap-4 ml-8 lg:ml-11 mr-20 lg:mr-24 relative">
-              {isDesktop && (
-                <CircularText 
-                  text="Let’s build something amazing! • " 
-                  spacing={1.16}
-                  size={1.16}
+                <Image
+                 src="/images/logo-usk-typo.png"
+                 alt="logo-usk-typo"
+                 width={500}
+                 height={500}
+                 className="w-10 xs:w-14 object-contain invert"
                 />
-              )}
-              {isMobile && (
-                <CircularText 
-                  text="Let’s build something amazing! • " 
-                  spacing={1.06}
-                  size={1.06}
-                />
-              )}
-              <button onMouseOver={() => setIsMailOpen(true)} onMouseLeave={() => setIsMailOpen(false)} className="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 border border-secondary p-5 xs:p-6 lg:p-7 rounded-full shadow-md shadow-black hover:bg-secondary duration-300">
-                {isMailOpen ? (
-                  <MailOpen className="text-primary w-6 h-6 xs:w-8 xs:h-8"/>
-                ) : (
-                  <Mail className="w-6 h-6 xs:w-8 xs:h-8 text-secondary"/>
-                )}
-              </button>
-            </div>
-           </Marquee>
-          </div>
-        )}
+               </div>
+               <div className={`flex flex-col gap-1 text-sm `}>
+                 <p className={`font-bold text-[0.68rem] xs:text-xs lg:text-sm`}>Syiah Kuala University</p>
+                 <div className="h-[1px] w-full bg-white/20 my-0.5 xs:my-1 lg:my-0.5"></div>
+                 <p className="text-[0.66rem] lg:text-xs font-bold">Informatics <span className="font-light text-[0.66rem] lg:text-xs">Bachelor Degree</span></p>
+                 <p className="text-[0.66rem] lg:text-xs font-light">Last GPA: <span className="font-bold">3.44 / 4</span></p>
+               </div>    
+             </div>            
+           </div>
+           <div id="Projects" className="flex gap-6 mx-8 lg:mx-11">
+             <div className="w-60 xs:w-72 lg:w-80 rounded-3xl border border-white/20 relative flex items-center shadow-md shadow-black">
+               <Marquee speed={60} className="flex gap-4" pauseOnClick direction="right">
+                 <div className="flex gap-4">
+                   <div className="w-28 xs:w-40 rounded-xl h-14 xs:h-20 bg-white -z-30"></div>
+                   <div className="w-28 xs:w-40 rounded-xl h-14 xs:h-20 bg-white -z-30"></div>
+                   <div className="w-28 xs:w-40 rounded-xl h-14 xs:h-20 bg-white -z-30"></div>
+                   <div className="w-28 xs:w-40 rounded-xl h-14 xs:h-20 bg-white -z-30"></div>
+                 </div>
+               </Marquee>
+             </div>
+             <div className="flex flex-col gap-1 justify-between">
+               <p className="font-semibold text-base xs:text-2xl text-secondary">Projects</p>
+               <p className="font-light text-[0.65rem] xs:text-xs w-40">Explore these projects to see how I can assist you further.</p>
+               <div className="flex gap-3 items-center cursor-pointer">
+                 <button className="bg-secondary rounded-full p-1 shadow-md shadow-black border-2 border-white/40">
+                   <ArrowRight className="text-primary w-4 h-4" />
+                 </button>
+                 <p className="font-semibold text-xs text-secondary">Learn More</p>
+               </div>
+             </div>
+           </div>          
+           <div id="WorkExperiences" className={`flex flex-col gap-2 xs:gap-3 mx-8 lg:mx-11`}>
+             <p className="font-bold text-lg xs:text-2xl text-third">Work Experiences</p>
+             <div className="flex gap-4">
+               <AnimatedTooltip items={WorkExperiences}/>
+             </div>
+           </div>
+           <div id="GetInTouch" className="flex gap-4 ml-8 lg:ml-11 mr-20 lg:mr-24 relative">
+             {isDesktop && (
+               <CircularText 
+                 text="Let’s build something amazing! • " 
+                 spacing={1.16}
+                 size={1.16}
+               />
+             )}
+             {isMobile && (
+               <CircularText 
+                 text="Let’s build something amazing! • " 
+                 spacing={1.06}
+                 size={1.06}
+               />
+             )}
+             <button onMouseOver={() => setIsMailOpen(true)} onMouseLeave={() => setIsMailOpen(false)} className="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 border border-secondary p-5 xs:p-6 lg:p-7 rounded-full shadow-md shadow-black hover:bg-secondary duration-300">
+               {isMailOpen ? (
+                 <MailOpen className="text-primary w-6 h-6 xs:w-8 xs:h-8"/>
+               ) : (
+                 <Mail className="w-6 h-6 xs:w-8 xs:h-8 text-secondary"/>
+               )}
+             </button>
+           </div>
+          </Marquee>
+        </div>
       </div>
       <div id="ProjectsSection" className="h-screen w-full">
        <Marquee className="flex gap-8 bg-secondary items-center pt-5 pb-2.5 z-[80] overflow-y-hidden" direction="right" speed={100}>
