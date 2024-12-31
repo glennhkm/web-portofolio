@@ -51,7 +51,7 @@ export const Navbar = () => {
         {isOpen ? (
           <>
             {menuItems.map((item, index) => (
-              <Link key={index} href={item.link} className={`hover:scale-[1.08] duration-200 flex items-center `}>
+              <Link onClick={() => setIsOpen(false)} key={index} href={item.link} className={`hover:scale-[1.08] duration-200 flex items-center `}>
                 {item.name}
               </Link>  
             ))}
