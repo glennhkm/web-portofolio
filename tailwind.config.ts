@@ -23,21 +23,31 @@ const config: Config = {
       },
     },
     extend: {
+      dropShadow: {
+        "balance": "0 0 20px 2px",
+      },
       animation: {
         "spotlight": "spotlight 2s ease .75s 1 forwards",
         "meteor-effect": "meteor 5s linear infinite",
         "blink": 'blink 1.4s infinite',
+        "spin-slow": "spin 12s linear infinite",
       },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        primary: "#1d1d1d",
+        secondary: "#FFDE4D" ,
+        third: "#32a2b0"
       },
       screens: {
+        "xs": "376px",
         "lg": "1025px",
       },
       fontFamily: {
         geistSans: "var(--font-geist-sans)",
         geistMono: "var(--font-geist-mono)",
+        metropolis: ['Metropolis', 'sans-serif'],
+        moderniz: ['Moderniz', 'sans-serif'],
       },
       boxShadow: {
         balance: "0 0 10px 2px",

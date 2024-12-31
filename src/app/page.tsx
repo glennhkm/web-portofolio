@@ -1,17 +1,24 @@
 "use client";
 
-import { SparklesCore } from "@/components/aceternity/sparkles";
-import { DefaultCard } from "@/components/cards/defaultCard";
+import { AnimatedTooltip } from "@/components/aceternity/animatedTooltip";
+import CircularText from "@/components/circularText/circularText";
+import { LeaderIcon } from "@/components/icons/leader";
 import { Linkedin } from "@/components/icons/linkedin";
 import { Navbar } from "@/components/navbar/navbar";
+import { WorkExperiences } from "@/data/workExperiences";
 import { useScreenSize } from "@/hooks/screenSizeValidation";
-import { div } from "framer-motion/client";
+import { geistMono } from "@/lib/fonts/getFonts";
+import { ArrowRight, Mail, MailOpen } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import Marquee from "react-fast-marquee";
+import { Typewriter } from "react-simple-typewriter";
 
 const Home = () => {
   const { isDesktop, isMobile } = useScreenSize();
   const [isLoading, setIsLoading] = useState(true);
+  const [educationCard, setEducationCard] = useState(0);
+  const [isMailOpen, setIsMailOpen] = useState(false);
 
   useEffect(() => {
     setTimeout(() => {
@@ -25,141 +32,243 @@ const Home = () => {
 
   return (
     <div className="w-full h-full">
-      <div className="z-50 relative">
-        <Navbar />
-      </div>
-      <div className="fixed inset-0 w-full h-full z-20 bg-black/80 [mask-image:radial-gradient(80vw_100vh_at_top,transparent_50%,white)]"></div>
-      <div
-        id="hero"
-        className="w-full h-screen flex flex-col items-center px-8 md:px-12 capitalize bg-[#151515]/20 bg-grid-white/5"
-      >
-        <div className="h-1/4 w-full flex flex-col items-center mt-24 relative">
-          <h1 className="font-bold text-center text-7xl md:text-[6.6rem] lg:text-[7rem]">
-            Glenn Hakim
-          </h1>
-          <div className="w-full lg:w-1/2 mt-6 relative">
-            <div className="absolute -translate-x-1/2 inset-x-1/2 top-0 bg-gradient-to-r from-transparent via-slate-300 to-transparent h-[2px] w-3/4 md:w-full blur-sm" />
-            <div className="absolute -translate-x-1/2 inset-x-1/2 top-0 bg-gradient-to-r from-transparent via-slate-300 to-transparent h-px w-3/4 md:w-full" />
-            <div className="absolute inset-x-1/2 -translate-x-[52%] md:-translate-x-[54%] top-0 bg-gradient-to-r from-transparent via-amber-400 to-transparent h-[5px] w-1/2 md:w-1/4 blur-sm" />
-            <div className="absolute inset-x-1/2 -translate-x-[52%] md:-translate-x-[54%] top-0 bg-gradient-to-r from-transparent via-amber-400 to-transparent h-px w-1/2 md:w-1/4" />
-          </div>
-          <SparklesCore
-            background="transparent"
-            minSize={0.4}
-            maxSize={1}
-            particleDensity={1200}
-            className="w-2/3 md:w-full lg:w-1/2"
-            particleColor="#FFFFFF"
-          />
-        </div>
-
-        <div
-          className={`w-full h-3/4 flex flex-col lg:flex-row justify-between items-start ${
-            isLoading ? "lg:items-center" : "lg:items-end"
-          }`}
-        >
-          {isLoading ? (
-            <p className="text-white text-base animate-blink text-center w-[40%]">Loading...</p>
-          ) : (
-            isDesktop && (
-              <div className="bg-gradient-to-b from-white/10 to-transparent w-[44%] rounded-t-[6rem] py-8 px-10 flex flex-col shadow-[0px_-10px_36px_1px_rgba(255,255,255,0.4)]">
-                <p className="font-bold text-[3.2rem]">Tech Enthusiast</p>
-                <p className="pl-2 pr-[6rem] text-balance">
-                  "A tech enthusiast driven by the art of crafting web
-                  solutions, engineering backends, and unlocking insights with
-                  machine learning, I thrive at the intersection of creativity
-                  and precision. My passion lies in transforming complex ideas
-                  into functional and elegant digital experiences, building
-                  robust backend systems that power seamless interactions, and
-                  diving into data to extract meaningful insights. With a
-                  commitment to continuous learning and a love for tackling new
-                  challenges, I’m constantly exploring the latest advancements
-                  in technology to push the boundaries of what’s possible."
-                </p>
+      <Navbar/>
+      <div id="BioSection" className={`w-full h-screen flex flex-col relative font-metropolis`}>
+        <div className="w-full h-[20%] flex bg-secondary  px-8 relative items-center">
+          <div className="text-primary flex flex-col gap-3">
+            <p className={`text-base xs:text-xl lg:text-4xl font-bold uppercase font-moderniz`}>Hola, I'm Glenn 👋🏼</p> 
+            <div className={`flex`}>
+              <div className={`bg-third text-xs xs:text-sm lg:text-base flex gap-2.5 rounded-full px-4 py-2 border-2 border-secondary shadow-lg shadow-black/60 text-white font-medium ${geistMono.className}`}>
+                <p className="ml-0.5">🧑🏻‍💻</p>
+                <div>
+                  <Typewriter
+                    words={['Full-stack Web Developer', 'Machine Learning Enthusiast']}
+                    loop={0}
+                    cursor
+                    cursorStyle='|'
+                    typeSpeed={100}
+                    deleteSpeed={100}
+                    delaySpeed={1000}
+                  />
+                </div>
               </div>
-            )
-          )}
-          <div className="w-full lg:w-1/2 h-[40%] md:h-[70%] lg:h-[66%] absolute bottom-0 left-1/2 -translate-x-1/2">
+            </div>           
+          </div>
+        </div>
+        <div className={`relative flex flex-col gap-12 lg:flex-row lg:justify-between lg:items-center w-full h-[80%] lg:h-[54%] py-10`}>
+          <div className="bg-[#255257] border-2 border-secondary absolute bottom-[31%] rotate-45 lg:bottom-auto lg:top-[2.4rem] lg:-rotate-[45.2deg] -left-[4rem] z-[70] lg:-z-40 w-56 text-center py-2">
+            <p className={`text-secondary font-bold uppercase text-xs`}>Open to Work</p>
+          </div>
+          <div className="flex flex-col gap-4 w-full md:w-1/2 px-6 lg:pr-0 lg:pl-12">
+            <p className="font-extrabold text-5xl lg:text-6xl text-secondary text-center lg:text-start">WHO AM I?</p>
+            <p className="font-light text-center text-xs xs:text-sm lg:text-start">Third-year Informatics student at Syiah Kuala University, specializing in full-stack web development with a growing passion for machine learning innovations. Through startup internships and team-driven projects, I've enhanced my technical acumen and developed a forward-thinking approach to collaboration. Try to bridging the gap between robust web solutions and AI-driven technologies.</p>
+            {isDesktop && ( 
+              <div className="flex flex-col gap-4 mt-6 -mb-10">
+                <p className="font-extrabold text-2xl uppercase">Main Tech</p>
+                <div className="flex gap-4"> 
+                  <div className="flex gap-4 bg-[#255257] px-4 py-2 rounded-3xl shadow-balance shadow-[#255257] text-secondary">
+                      <p className="font-bold text-xs text-center">Next JS</p>
+                      <p className="font-bold text-xs text-center">Express JS</p>
+                  </div>
+                  <div className="flex gap-4 px-4 py-2 rounded-3xl shadow-balance shadow-secondary/60 text-white">
+                      <p className="font-bold text-xs text-center">Mongo DB</p>
+                      <p className="font-bold text-xs text-center">MySQL</p>
+                      <p className="font-bold text-xs text-center">PostgreSQL</p>
+                      <p className="font-bold text-xs text-center">Docker</p>
+                  </div>
+                  <div className="flex gap-4 bg-secondary px-4 py-2 rounded-3xl shadow-balance shadow-secondary/60 text-primary">
+                      <p className="font-bold text-xs text-center">Tensorflow</p>
+                      <p className="font-bold text-xs text-center">Pytorch</p>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+          <div className="absolute bottom-0 w-[80%] h-[60%] xs:w-[87%] xs:h-[67%] lg:w-[40%] lg:h-[74vh] left-1/2 -translate-x-1/2 lg:left-auto lg:right-12 lg:translate-x-0 z-[60]">
             <Image
               src="/images/foto-glenn.png"
               alt="Home"
               fill
-              className="object-contain"
+              className="object-contain opacity-"
             />
           </div>
-
-          <div className="flex w-full lg:w-[44%]">
-            <div className="grid grid-cols-3 gap-3 w-full">
-              {isLoading ? (
-                <p className="text-white text-base animate-blink text-center w-full col-span-3">
-                  Loading...
-                </p>
-              ) : (
-                <>
-                  <DefaultCard className="col-span-2 w-full lg:h-full shadow-balance shadow-yellow-300 flex flex-col items-center lg:items-start gap-1 lg:gap-2.5 px-2 py-2 lg:px-5 lg:py-4">
-                    {/* <div className="flex gap-2 w-full items-center"> */}
-                    <h6 className="font-bold text-sm lg:text-xl lg:-mt-1 lg:mb-1.5">
-                      Education
-                    </h6>
-                    {/* <div className="h-[0.2px] w-full bg-white"></div> */}
-                    {/* </div> */}
-                    <div className="flex gap-2 w-full justify-center">
-                      <div className="bg-white/40 rounded-3xl p-3 pb-4 pr-4 border border-yellow-300 shadow-md shadow-black flex items-center">
-                        <Image
-                          src="/images/logo-usk.png"
-                          alt="logo-usk"
-                          width={500}
-                          height={500}
-                          className="w-20 lg:w-72 object-contain"
-                        />
-                      </div>
-                      <div className="flex flex-col gap-1 lg:gap-2 justify-center">
-                        <p className="text-[0.5rem] lg:text-base font-semibold">
-                          Bachelor Degree, Informatics
-                        </p>
-                        <p className="text-[0.5rem] lg:text-xs">
-                          August 2022 - Present
-                        </p>
-                        <div className="w-full h-[0.4px] bg-white"></div>
-                        <p className="text-[0.5rem] lg:text-sm font-bold">
-                          Last GPA : 3.4
-                        </p>
-                      </div>
-                    </div>
-                  </DefaultCard>
-                  <DefaultCard className="lg:h-full shadow-balance shadow-sky-300 px-2 py-2 lg:px-5 lg:py-4 grid grid-cols-2 justify-center items-center">
-                    <h6 className="font-bold text-sm lg:text-xl lg:-mt-1 lg:mb-1.5 col-span-2 text-center lg:text-start">
-                      Socials
-                    </h6>
-                    <Linkedin className={`w-[2.4rem] md:w-[4.4rem] ${isMobile && 'ml-auto'}`}/>
-                    <Linkedin className="w-[2.4rem] md:w-[4.4rem]"/>
-                    <Linkedin className={`w-[2.4rem] md:w-[4.4rem] ${isMobile && 'ml-auto'}`}/>
-                    <Linkedin className="w-[2.4rem] md:w-[4.4rem]"/>
-                  </DefaultCard>
-                  <DefaultCard className="w-full h-24 lg:h-48 col-span-3 rounded-b-none shadow-[0px_-4px_12px_1px_rgba(255,255,255,0.4)] shadow-teal-500">
-                    <div>tes</div>
-                  </DefaultCard>
-                </>
-              )}
+          {isMobile && (
+            <Marquee className="lg:absolute lg:bottom-0 left-0 flex gap-8 items-center pt-4 pb-2 xs:pt-6 xs:pb-3 w-full -z-20" direction="left" speed={80}>
+             <div className={`flex gap-8 font-moderniz text-primary items-center`}>               
+              <p className="font-extrabold text-lg xs:text-2xl uppercase text-white">Main Tech</p>
+              <div className="flex gap-4"> 
+                <div className="flex gap-4 bg-[#255257] px-4 py-2 rounded-3xl shadow-balance shadow-[#255257] text-secondary">
+                    <p className="font-bold text-[0.68rem] xs:text-xs text-center">Next JS</p>
+                    <p className="font-bold text-[0.68rem] xs:text-xs text-center">Express JS</p>
+                </div>
+                <div className="flex gap-4 px-4 py-2 rounded-3xl shadow-balance shadow-secondary/60 text-white">
+                    <p className="font-bold text-[0.68rem] xs:text-xs text-center">Mongo DB</p>
+                    <p className="font-bold text-[0.68rem] xs:text-xs text-center">MySQL</p>
+                    <p className="font-bold text-[0.68rem] xs:text-xs text-center">PostgreSQL</p>
+                    <p className="font-bold text-[0.68rem] xs:text-xs text-center">Docker</p>
+                </div>
+                <div className="flex gap-4 bg-secondary px-4 py-2 rounded-3xl shadow-balance shadow-secondary/60 text-primary">
+                    <p className="font-bold text-[0.68rem] xs:text-xs text-center">Tensorflow</p>
+                    <p className="font-bold text-[0.68rem] xs:text-xs text-center">Pytorch</p>
+                </div>
+              </div>
+             </div>
+            </Marquee>
+          )}
+          {(isDesktop) && (        
+            <div className="flex flex-col gap-2 font-moderniz w-1/2 text-6xl items-center justify-center">
+              <p>GLENN HAKIM</p>
+              <p>GLENN HAKIM</p>
+              <p>GLENN HAKIM</p>
+              <p>GLENN HAKIM</p>
+              <p>GLENN HAKIM</p>
             </div>
-          </div>
+          )}
         </div>
-
-        <div className="w-3/4 z-40 h-[1px] absolute bottom-0 bg-gradient-to-r from-transparent via-white to-transparent"></div>
+        {(isDesktop || isMobile) && (
+          <div className={`w-full absolute bottom-0 border-t-[1px] border-white/20 h-[20%] lg:h-[26%] bg-primary z-[80]`}>
+           <Marquee className="w-full h-full" speed={50} pauseOnHover>
+            <div id="EducationAndHimpunan" className="flex gap-4 text-8xl font-bold relative mx-11">
+              <div onMouseOver={() => setEducationCard(1)} className={`${educationCard !== 1 ? '-z-10' : 'z-10'} hover:scale-110 duration-200 cursor-pointer px-7 h-[6.2rem] xs:h-32 absolute top-0 -left-20 border flex items-center bg-primary border-white/30 shadow-md shadow-black rounded-full gap-4`}>
+                <Image
+                  src="/images/HMIF.png"
+                  alt="logo-usk"
+                  width={500}
+                  height={500}
+                  className="w-14 xs:w-[3.9rem] object-contain"
+                />
+                <div className={`flex flex-col gap-1 text-sm `}>
+                  <p className="font-bold text-xs xs:text-sm">Himpunan Mahasiswa Informatika USK</p>
+                  <div className="h-[1px] w-full bg-white/20 my-0.5"></div>
+                  <div className="flex gap-2.5 items-center">
+                    <LeaderIcon className="w-5 h-5 xs:w-6 xs:h-6"/>
+                    <p className="text-sm xs:text-xl font-bold ">Chairman 2024/2025</p>
+                  </div>
+                </div>    
+              </div>          
+              <div onMouseOver={() => setEducationCard(0)} className={`hover:scale-110 duration-200 cursor-pointer px-7 h-[6.2rem] xs:h-32 border bg-primary border-white/30 shadow-md shadow-black rounded-full flex gap-4 items-center`}>
+                <div className="flex gap-1.5">
+                 <Image
+                  src="/images/usk-logo-1.png"
+                  alt="logo-usk"
+                  width={500}
+                  height={500}
+                  className="w-14 xs:w-20 lg:w-[3.9rem] object-contain"
+                 />
+                 <Image
+                  src="/images/logo-usk-typo.png"
+                  alt="logo-usk-typo"
+                  width={500}
+                  height={500}
+                  className="w-14 xs:w-20 object-contain invert"
+                 />
+                </div>
+                <div className={`flex flex-col gap-1 text-sm `}>
+                  <p className={`font-bold text-sm`}>Syiah Kuala University</p>
+                  <div className="h-[1px] w-full bg-white/20 my-0.5"></div>
+                  <p className="text-xs font-bold">Informatics <span className="font-light text-xs">Bachelor Degree</span></p>
+                  <p className="text-xs font-light">Last GPA: <span className="font-bold">3.44 / 4</span></p>
+                </div>    
+              </div>            
+            </div>
+            <div id="Projects" className="flex gap-6 mx-11">
+              <div className="w-80 rounded-3xl border border-white/20 relative flex items-center shadow-md shadow-black">
+                <Marquee speed={60} className="flex gap-4" pauseOnHover direction="right">
+                  <div className="flex gap-4">
+                    <div className="w-28 xs:w-40 rounded-xl h-14 xs:h-20 bg-white -z-30"></div>
+                    <div className="w-28 xs:w-40 rounded-xl h-14 xs:h-20 bg-white -z-30"></div>
+                    <div className="w-28 xs:w-40 rounded-xl h-14 xs:h-20 bg-white -z-30"></div>
+                    <div className="w-28 xs:w-40 rounded-xl h-14 xs:h-20 bg-white -z-30"></div>
+                  </div>
+                </Marquee>
+              </div>
+              <div className="flex flex-col gap-1 justify-between">
+                <p className="font-semibold text-base xs:text-2xl text-secondary">Projects</p>
+                <p className="font-light text-[0.65rem] xs:text-xs w-40">Explore these three distinct case studies to see how I can help you.</p>
+                <div className="flex gap-3 items-center cursor-pointer">
+                  <button className="bg-secondary rounded-full p-1 shadow-md shadow-black border-2 border-white/40">
+                    <ArrowRight className="text-primary w-4 h-4" />
+                  </button>
+                  <p className="font-semibold text-xs text-secondary">Learn More</p>
+                </div>
+              </div>
+            </div>          
+            <div id="WorkExperiences" className={`flex flex-col gap-2 xs:gap-3 mx-11 overflow-visible`}>
+              <p className="font-bold text-lg xs:text-2xl text-third">Work Experiences</p>
+              <div className="flex gap-4 overflow-visible">
+                <AnimatedTooltip items={WorkExperiences}/>
+              </div>
+            </div>
+            <div id="GetInTouch" className="flex gap-4 ml-11 mr-24 relative">
+              {isDesktop && (
+                <CircularText 
+                  text="Let’s build something amazing! • " 
+                  spacing={1.4}
+                  size={1.4}
+                />
+              )}
+              {isMobile && (
+                <CircularText 
+                  text="Let’s build something amazing! • " 
+                  spacing={1.06}
+                  size={1.06}
+                />
+              )}
+              <button onMouseOver={() => setIsMailOpen(true)} onMouseLeave={() => setIsMailOpen(false)} className="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 border border-secondary p-5 xs:p-6 lg:p-8 rounded-full shadow-md shadow-black hover:bg-secondary duration-300">
+                {isMailOpen ? (
+                  <MailOpen className="text-primary w-6 h-6 xs:w-8 xs:h-8"/>
+                ) : (
+                  <Mail className="w-6 h-6 xs:w-8 xs:h-8 text-secondary"/>
+                )}
+              </button>
+            </div>
+           </Marquee>
+          </div>
+        )}
       </div>
-
-      <div>tes</div>
-      <div>tes</div>
-      <div>tes</div>
-      <div>tes</div>
-      <div>tes</div>
-      <div>tes</div>
-      <div>tes</div>
-      <div>tes</div>
-      <div>tes</div>
-      <div>tes</div>
-      <div>tes</div>
-      <div>tes</div>
+      <div id="ProjectsSection" className="h-screen w-full">
+       <Marquee className="flex gap-8 bg-secondary items-center pt-6 pb-3 z-[80]" direction="right" speed={100}>
+        <div className={`text-5xl lg:text-7xl flex gap-8 font-moderniz text-primary`}>
+          <p>PROJECTS</p>
+          <p>PROJECTS</p>
+          <p>PROJECTS</p>
+          <p>PROJECTS</p>
+          <p>PROJECTS</p>
+          <p>PROJECTS</p>
+          <p>PROJECTS</p>
+          <p>PROJECTS</p>
+          <p>PROJECTS</p>
+        </div>
+       </Marquee>
+       <Marquee className="flex gap-8 items-center mt-3" direction="left" speed={100}>
+        <div className="text-8xl lg:text-[7rem] flex gap-8 font-moderniz text-white">
+          <p>WELCOME!</p>
+          <p>WELCOME!</p>
+          <p>WELCOME!</p>
+          <p>WELCOME!</p>
+          <p>WELCOME!</p>
+          <p>WELCOME!</p>
+          <p>WELCOME!</p>
+          <p>WELCOME!</p>
+          <p>WELCOME!</p>
+        </div>
+       </Marquee>
+      </div>
+      <div id="ContactSection" className="h-screen w-full">
+      <Marquee className="flex gap-8 bg-third items-center pt-6 pb-3" direction="right" speed={100}>
+        <div className={`text-5xl lg:text-7xl flex gap-8 font-moderniz text-white`}>
+          <p>CONTACT</p>
+          <p>CONTACT</p>
+          <p>CONTACT</p>
+          <p>CONTACT</p>
+          <p>CONTACT</p>
+          <p>CONTACT</p>
+          <p>CONTACT</p>
+          <p>CONTACT</p>
+          <p>CONTACT</p>
+        </div>
+       </Marquee>
+      </div>
     </div>
   );
 };
