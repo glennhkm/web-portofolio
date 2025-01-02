@@ -7,33 +7,33 @@ export const Navbar = () => {
   const { isDesktop, isMobile, isTablet } = useScreenSize();
   const [isOpen, setIsOpen] = useState(false)
   const [isVisible, setIsVisible] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
+
+  useEffect(() => {
+    let hideTimeout: ReturnType<typeof setTimeout>;
+
+    const handleScroll = () => {
+      setIsVisible(true);
+      clearTimeout(hideTimeout);
+      hideTimeout = setTimeout(() => {
+        setIsVisible(false);
+      }, 1600);
+    };
+
+    if (typeof window !== 'undefined') {
+      window.addEventListener('scroll', handleScroll);
+
+      return () => {
+        window.removeEventListener('scroll', handleScroll);
+        clearTimeout(hideTimeout);
+      };
+    }
+  }, []);
+
   const menuItems = [
     { name: 'Essence', link: '#EssenceSection' },
     { name: 'Project', link: '#ProjectsSection' },
     { name: 'Contact', link: '#ContactSection' }
-  ]
-
-  const controlNavbar = () => {
-    if (typeof window !== "undefined") {
-      if (window.scrollY > lastScrollY) {
-        setIsVisible(false);
-      } else {
-        setIsVisible(true);
-      }
-      setLastScrollY(window.scrollY);
-    }
-  };
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      window.addEventListener("scroll", controlNavbar);
-
-      return () => {
-        window.removeEventListener("scroll", controlNavbar);
-      };
-    }
-  }, [lastScrollY]);
+  ];
 
   return (
     <>

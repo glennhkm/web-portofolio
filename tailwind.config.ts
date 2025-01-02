@@ -4,6 +4,7 @@ import svgToDataUri from "mini-svg-data-uri"
 import colors from "tailwindcss/colors";
 import flattenColorPalette from "tailwindcss/lib/util/flattenColorPalette";
 import plugin from "tailwindcss/plugin"
+import { robotoFlex } from "@/lib/fonts/getFonts";
 
 const config: Config = {
   darkMode: ["class"],
@@ -49,6 +50,7 @@ const config: Config = {
         geistMono: "var(--font-geist-mono)",
         metropolis: ['Metropolis', 'sans-serif'],
         moderniz: ['Moderniz', 'sans-serif'],
+        robotoFlex: ['Roboto Flex', 'sans-serif'],
       },
       boxShadow: {
         balance: "0 0 10px 2px",

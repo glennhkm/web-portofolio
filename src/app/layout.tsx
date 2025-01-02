@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { geistMono, geistSans } from "../lib/fonts/getFonts";
 
 export const metadata: Metadata = {
   title: "Glenn | Portofolio",
-  description: "Portofolio Glenn Hakim",
+  description: "Glenn Hakim Portofolio Website",
 };
 
 export default function RootLayout({
@@ -15,7 +14,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body
-        className={`${geistSans.className} antialiased bg-primary`}
+        className={`antialiased bg-primary overflow-x-hidden`}
       >
         {children}
       </body>

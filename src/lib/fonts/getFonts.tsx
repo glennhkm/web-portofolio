@@ -1,5 +1,5 @@
 import localFont from "next/font/local";
-import { Roboto_Flex, DM_Sans } from 'next/font/google'
+import { Roboto_Flex, DM_Sans, Inter, Oswald } from 'next/font/google'
 
 export const geistSans = localFont({
   src: "../../../public/fonts/GeistVF.woff",
@@ -18,5 +18,13 @@ export const robotoFlex = Roboto_Flex({
 })
 
 export const dmSans = DM_Sans({
+  subsets: ["latin"],
+})
+
+export const inter = Inter({
+  subsets: ["latin"],
+})
+
+export const oswald = Oswald({
   subsets: ["latin"],
 })

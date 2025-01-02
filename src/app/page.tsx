@@ -1,18 +1,32 @@
 "use client";
 
 import { AnimatedTooltip } from "@/components/aceternity/animatedTooltip";
+import { ProjectsCard } from "@/components/cards/projectsCard";
 import CircularText from "@/components/circularText/circularText";
 import { LeaderIcon } from "@/components/icons/leader";
 import { Linkedin } from "@/components/icons/linkedin";
 import { Navbar } from "@/components/navbar/navbar";
+import { projects } from "@/data/projects";
 import { WorkExperiences } from "@/data/workExperiences";
 import { useScreenSize } from "@/hooks/screenSizeValidation";
 import { geistMono } from "@/lib/fonts/getFonts";
-import { ArrowRight, Mail, MailOpen, Pause, Play } from "lucide-react";
+import { ArrowRight, GithubIcon, InstagramIcon, LinkedinIcon, Mail, MailOpen, Pause, Play } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import Marquee from "react-fast-marquee";
 import { Typewriter } from "react-simple-typewriter";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Pagination } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/pagination';
+import { ProjectsSwiper } from "@/components/swiper/projectsSwiper";
+import { Whatsapp } from "@/components/icons/whatsapp";
+import { Github } from "@/components/icons/github";
+import { Email } from "@/components/icons/email";
+import { Instagram } from "@/components/icons/instagram";
+import Link from "next/link";
+import { Footer } from "@/components/footer/footer";
+import { contacts } from "@/data/contacts";
 
 const Home = () => {
   const { isDesktop, isMobile } = useScreenSize();
@@ -30,7 +44,7 @@ const Home = () => {
       setIsLoading(true);
     };
   }, []);
-
+  
   return (
     <div className="w-full h-full">
       <Navbar/>
@@ -39,7 +53,7 @@ const Home = () => {
           <div className="text-primary flex flex-col gap-3">
             <p className={`text-base xs:text-xl lg:text-4xl font-bold uppercase font-moderniz`}>Hola, I'm Glenn 👋🏼</p> 
             <div className={`flex`}>
-              <div className={`bg-third text-xs xs:text-sm lg:text-base flex gap-2.5 rounded-full px-4 py-2 border-2 border-secondary shadow-lg shadow-primary/80 text-white font-medium ${geistMono.className}`}>
+              <div className={`bg-third text-xs xs:text-sm lg:text-base 2xl:text-base flex gap-2.5 rounded-full px-4 py-2 border-2 border-secondary shadow-lg shadow-primary/80 text-white font-medium ${geistMono.className}`}>
                 <p className="ml-0.5">🧑🏻‍💻</p>
                 <div>
                   <Typewriter
@@ -179,13 +193,20 @@ const Home = () => {
              </div>            
            </div>
            <div id="Projects" className="flex gap-6 mx-8 lg:mx-11">
-             <div className="w-60 xs:w-72 lg:w-80 rounded-3xl border border-white/20 relative flex items-center shadow-md shadow-black">
-               <Marquee speed={60} className="flex gap-4" pauseOnClick direction="right">
+             <div className="w-60 xs:w-72 lg:w-80 rounded-3xl border border-white/20 relative flex items-center shadow-md shadow-black bg-white/5">
+               <Marquee speed={100} className="flex gap-4" direction="right">
                  <div className="flex gap-4">
-                   <div className="w-28 xs:w-40 rounded-xl h-14 xs:h-20 bg-white -z-30"></div>
-                   <div className="w-28 xs:w-40 rounded-xl h-14 xs:h-20 bg-white -z-30"></div>
-                   <div className="w-28 xs:w-40 rounded-xl h-14 xs:h-20 bg-white -z-30"></div>
-                   <div className="w-28 xs:w-40 rounded-xl h-14 xs:h-20 bg-white -z-30"></div>
+                  {projects.map((project) => (
+                    <div key={project.id} className="w-28 xs:w-40 rounded-xl h-20 xs:h-[5.8rem] -z-30 py-2">
+                      <Image
+                        src={project.image1}
+                        alt="Project"
+                        width={500}
+                        height={500}
+                        className="w-full h-full object-cover rounded-xl border-[1px] border-white/30 shadow-md shadow-black"
+                      />
+                    </div>
+                  ))}
                  </div>
                </Marquee>
              </div>
@@ -232,7 +253,7 @@ const Home = () => {
           </Marquee>
         </div>
       </div>
-      <div id="ProjectsSection" className="h-screen w-full">
+      <div id="ProjectsSection" className="h-screen w-full flex flex-col">
        <Marquee className="flex gap-8 bg-secondary items-center pt-5 pb-2.5 z-[80] overflow-y-hidden" direction="right" speed={100}>
         <div className={`text-4xl lg:text-7xl flex gap-8 font-moderniz text-primary`}>
           <p>PROJECTS</p>
@@ -245,23 +266,18 @@ const Home = () => {
           <p>PROJECTS</p>
           <p>PROJECTS</p>
         </div>
-       </Marquee>
-       <Marquee className="flex gap-8 items-center mt-3" direction="left" speed={100}>
-        <div className="text-6xl lg:text-[7rem] flex gap-8 font-moderniz text-white overflow-y-hidden">
-          <p>WELCOME!</p>
-          <p>WELCOME!</p>
-          <p>WELCOME!</p>
-          <p>WELCOME!</p>
-          <p>WELCOME!</p>
-          <p>WELCOME!</p>
-          <p>WELCOME!</p>
-          <p>WELCOME!</p>
-          <p>WELCOME!</p>
-        </div>
-       </Marquee>
+       </Marquee>  
+       <div className="w-full h-full lg:p-12 flex overflow-x-hidden lg:overflow-x-scroll gap-8 no-scrollbar overflow-y-hidden">
+        {isDesktop && projects.map((project) => (
+          <ProjectsCard key={project.id} project={project}/>
+        ))}
+        {isMobile && (
+          <ProjectsSwiper/>
+        )}                
+       </div>
       </div>
-      <div id="ContactSection" className="h-screen w-full">
-      <Marquee className="flex gap-8 bg-third items-center pt-5 pb-2.5 overflow-y-hidden" direction="right" speed={100}>
+      <div id="ContactSection" className="h-screen w-full flex flex-col">
+       <Marquee className="flex gap-8 bg-third items-center pt-5 pb-2.5 overflow-y-hidden" direction="right" speed={100}>
         <div className={`text-4xl lg:text-7xl flex gap-8 font-moderniz text-white`}>
           <p>CONTACT</p>
           <p>CONTACT</p>
@@ -274,6 +290,20 @@ const Home = () => {
           <p>CONTACT</p>
         </div>
        </Marquee>
+       <div className="w-full h-full lg:p-12 flex flex-col justify-center items-center overflow-x-hidden lg:overflow-x-scroll gap-20 no-scrollbar overflow-y-hidden font-metropolis">
+        <h3 className="font-bold text-[5.25rem] leading-none">Get In Touch</h3>
+        <p className="text-sm max-w-2xl text-center -mt-10">
+          Explore the possibilities of collaboration and innovation together. Whether you have a project in mind, want to discuss technology, or just want to say hello - I'm always excited to connect with fellow creators and tech enthusiasts. Let's turn ideas into reality!
+        </p>
+        <div className="w-fit h-fit flex gap-8 ">
+          {contacts.map((contact, index) => (
+          <Link key={index} href={contact.url} target="_blank" className="bg-secondary hover:scale-110 duration-200 shadow-balance shadow-secondary hover:shadow-third w-36 h-36 flex justify-center items-center rounded-full">
+            {contact.icon}
+          </Link>
+          ))}
+        </div>
+       </div>
+      <Footer/>
       </div>
     </div>
   );
