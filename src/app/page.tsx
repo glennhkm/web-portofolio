@@ -213,12 +213,12 @@ const Home = () => {
              <div className="flex flex-col gap-1 justify-between">
                <p className="font-semibold text-base xs:text-2xl text-secondary">Projects</p>
                <p className="font-light text-[0.65rem] xs:text-xs w-40">Explore these projects to see how I can assist you further.</p>
-               <div className="flex gap-3 items-center cursor-pointer">
+               <Link href={"#ProjectsSection"} className="flex gap-3 items-center cursor-pointer">
                  <button className="bg-secondary rounded-full p-1 shadow-md shadow-black border-2 border-white/40">
                    <ArrowRight className="text-primary w-4 h-4" />
                  </button>
                  <p className="font-semibold text-xs text-secondary">Learn More</p>
-               </div>
+               </Link>
              </div>
            </div>          
            <div id="WorkExperiences" className={`flex flex-col gap-2 xs:gap-3 mx-8 lg:mx-11`}>
@@ -242,13 +242,13 @@ const Home = () => {
                  size={1.06}
                />
              )}
-             <button onMouseOver={() => setIsMailOpen(true)} onMouseLeave={() => setIsMailOpen(false)} className="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 border border-secondary p-5 xs:p-6 lg:p-7 rounded-full shadow-md shadow-black hover:bg-secondary duration-300">
+             <Link href={"#ContactSection"} onMouseOver={() => setIsMailOpen(true)} onMouseLeave={() => setIsMailOpen(false)} className="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 border border-secondary p-5 xs:p-6 lg:p-7 rounded-full shadow-md shadow-black lg:hover:bg-secondary duration-300">
                {isMailOpen ? (
                  <MailOpen className="text-primary w-6 h-6 xs:w-8 xs:h-8"/>
                ) : (
                  <Mail className="w-6 h-6 xs:w-8 xs:h-8 text-secondary"/>
                )}
-             </button>
+             </Link>
            </div>
           </Marquee>
         </div>
@@ -290,16 +290,16 @@ const Home = () => {
           <p>CONTACT</p>
         </div>
        </Marquee>
-       <div className="w-full h-full lg:p-12 flex flex-col justify-center items-center overflow-x-hidden lg:overflow-x-scroll gap-20 no-scrollbar overflow-y-hidden font-metropolis">
-        <h3 className="font-bold text-[5.25rem] leading-none">Get In Touch</h3>
+       <div className="w-full h-full p-8 lg:p-12 flex flex-col justify-center items-center overflow-x-hidden lg:overflow-x-scroll gap-20 no-scrollbar overflow-y-hidden font-metropolis">
+        <h3 className="font-bold text-[2.96rem] lg:text-[5.25rem] leading-none">Get in Touch</h3>
         <p className="text-sm max-w-2xl text-center -mt-10">
           Explore the possibilities of collaboration and innovation together. Whether you have a project in mind, want to discuss technology, or just want to say hello - I'm always excited to connect with fellow creators and tech enthusiasts. Let's turn ideas into reality!
         </p>
-        <div className="w-fit h-fit flex gap-8 ">
+        <div className="lg:w-fit h-fit gap-8 flex flex-wrap w-[100%] justify-center">
           {contacts.map((contact, index) => (
-          <Link key={index} href={contact.url} target="_blank" className="bg-secondary hover:scale-110 duration-200 shadow-balance shadow-secondary hover:shadow-third w-36 h-36 flex justify-center items-center rounded-full">
-            {contact.icon}
-          </Link>
+            <Link key={index} href={contact.url} target="_blank" className={`bg-secondary hover:scale-110 duration-200 shadow-balance shadow-secondary hover:shadow-third w-16 h-16 xs:w-20 xs:h-20 lg:w-36 lg:h-36 flex justify-center items-center rounded-full`}>
+              {contact.icon}
+            </Link>
           ))}
         </div>
        </div>

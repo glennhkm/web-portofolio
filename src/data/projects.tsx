@@ -36,7 +36,7 @@ export const projects: Project[] = [
     {
         id: 3,
         title: "NBA NEWS SEARCH ENGINE WEBSITE",
-        description: "This Search Engine uses WebSocket (Socket.IO) for real-time comparison of cosine and Jaccard similarity in processing crawled data from nba.com/news, delivering precise and efficient NBA news retrieval.",
+        description: "This Search Engine uses WebSocket (Socket.IO) for real-time comparison of Cosine and Jaccard similarity in processing crawled data from nba.com/news, delivering precise and efficient NBA news retrieval.",
         image1: "/images/nba-ir-1.png",
         image2: "/images/nba-ir-2.png",
         techStack: ["Next JS", "Flask", "Socket IO", "Mongo DB", "Netlify"],
