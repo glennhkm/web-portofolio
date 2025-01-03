@@ -4,6 +4,9 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Glenn | Portofolio",
   description: "Glenn Hakim Portofolio Website",
+  verification: {
+    google: "8I1TcDNROiC4aYfP69UkhkOz7Drgu54uu1PcAktxRuI"
+  },
   icons: {
     icon: ['/favicon.ico?v=4'],
     apple: ['/apple-touch-icon.png?v=4'],
