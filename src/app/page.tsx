@@ -4,46 +4,26 @@ import { AnimatedTooltip } from "@/components/aceternity/animatedTooltip";
 import { ProjectsCard } from "@/components/cards/projectsCard";
 import CircularText from "@/components/circularText/circularText";
 import { LeaderIcon } from "@/components/icons/leader";
-import { Linkedin } from "@/components/icons/linkedin";
 import { Navbar } from "@/components/navbar/navbar";
 import { projects } from "@/data/projects";
 import { WorkExperiences } from "@/data/workExperiences";
 import { useScreenSize } from "@/hooks/screenSizeValidation";
 import { geistMono } from "@/lib/fonts/getFonts";
-import { ArrowRight, GithubIcon, InstagramIcon, LinkedinIcon, Mail, MailOpen, Pause, Play } from "lucide-react";
+import { ArrowRight, Mail, MailOpen, Pause, Play } from "lucide-react";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Marquee from "react-fast-marquee";
 import { Typewriter } from "react-simple-typewriter";
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/pagination';
 import { ProjectsSwiper } from "@/components/swiper/projectsSwiper";
-import { Whatsapp } from "@/components/icons/whatsapp";
-import { Github } from "@/components/icons/github";
-import { Email } from "@/components/icons/email";
-import { Instagram } from "@/components/icons/instagram";
 import Link from "next/link";
 import { Footer } from "@/components/footer/footer";
 import { contacts } from "@/data/contacts";
 
 const Home = () => {
   const { isDesktop, isMobile } = useScreenSize();
-  const [isLoading, setIsLoading] = useState(true);
   const [educationCard, setEducationCard] = useState(0);
   const [isMailOpen, setIsMailOpen] = useState(false);
   const [isPlayMarquee, setIsPlayMarquee] = useState(true);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 1200);
-
-    return () => {
-      setIsLoading(true);
-    };
-  }, []);
   
   return (
     <div className="w-full h-full">
@@ -101,10 +81,10 @@ const Home = () => {
           </div>
           <div className="absolute bottom-0 w-[80%] h-[60%] xs:w-[87%] xs:h-[67%] lg:w-[40%] lg:h-[74vh] left-1/2 -translate-x-1/2 lg:left-auto lg:right-12 lg:translate-x-0 z-[60]">
             <Image
-              src="/images/foto-glenn.png"
-              alt="Home"
+              src="https://utfs.io/f/WjLJ1ngIOkg6cFztZLle5u7Xa4TRS2tOFfGqZ8WKk03ysLJA"
+              alt="Glenn Hakim"
               fill
-              className="object-contain opacity-"
+              className="object-contain"
             />
           </div>
           {isMobile && (
@@ -152,8 +132,8 @@ const Home = () => {
            <div id="EducationAndHimpunan" className="flex gap-4 text-8xl font-bold relative mx-8 lg:mx-11">
              <div onMouseOver={() => isDesktop && setEducationCard(1)} onClick={() => isMobile && setEducationCard(1)} className={`${educationCard !== 1 ? '-z-10' : 'z-10'} active:scale-110 lg:active:scale-110 lg:hover:scale-110 duration-200 cursor-pointer px-7 h-[6.2rem] xs:h-32 absolute top-0 -left-20 border flex items-center bg-primary border-white/30 shadow-md shadow-black rounded-full gap-4`}>
                <Image
-                 src="/images/HMIF.png"
-                 alt="logo-usk"
+                 src="https://utfs.io/f/WjLJ1ngIOkg6Ar4qtwAKIKFQvR98o1bMXDBnGsuVfzx4Lal2"
+                 alt="logo-hmif-usk"
                  width={500}
                  height={500}
                  className="w-10 xs:w-14 lg:w-[3.9rem] object-contain"
@@ -170,14 +150,14 @@ const Home = () => {
              <div onMouseOver={() => setEducationCard(0)} onClick={() => isMobile && setEducationCard(0)} className={`active:scale-110 lg:active:scale-110 lg:hover:scale-110 duration-200 cursor-pointer px-7 h-[6.2rem] xs:h-32 border bg-primary border-white/30 shadow-md shadow-black rounded-full flex gap-4 items-center`}>
                <div className="flex gap-1.5">
                 <Image
-                 src="/images/usk-logo-1.png"
+                 src="https://utfs.io/f/WjLJ1ngIOkg6ftAbS2oELJFSPCZ4eO06HwqphaMBGjQY9Avr"
                  alt="logo-usk"
                  width={500}
                  height={500}
                  className="w-10 xs:w-14 lg:w-[3.9rem] object-contain"
                 />
                 <Image
-                 src="/images/logo-usk-typo.png"
+                 src="https://utfs.io/f/WjLJ1ngIOkg68kgqnifvR0a6zZ2mU4dVktXbeojGDNIE5xBY"
                  alt="logo-usk-typo"
                  width={500}
                  height={500}

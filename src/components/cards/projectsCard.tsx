@@ -1,7 +1,6 @@
 import { Project } from '@/data/projects';
 import { useScreenSize } from '@/hooks/screenSizeValidation';
 import { oswald } from '@/lib/fonts/getFonts'
-import { desc } from 'framer-motion/client';
 import { GithubIcon, Globe } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link';
