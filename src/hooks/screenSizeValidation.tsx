@@ -10,8 +10,8 @@ export const useScreenSize = () => {
   useEffect(() => {
     const updateScreenSize = () => {
       setScreenSize({
-        isMobile: window.matchMedia("(max-width: 768px)").matches,
-        isTablet: window.matchMedia("(min-width: 769px) and (max-width: 1024px)").matches,      
+        isMobile: window.matchMedia("(max-width: 767px)").matches,
+        isTablet: window.matchMedia("(min-width: 768px) and (max-width: 1024px)").matches,      
         isDesktop: window.matchMedia("(min-width: 1025px)").matches,
       });
     };

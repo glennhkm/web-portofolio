@@ -20,7 +20,7 @@ import { Footer } from "@/components/footer/footer";
 import { contacts } from "@/data/contacts";
 
 const Home = () => {
-  const { isDesktop, isMobile } = useScreenSize();
+  const { isDesktop, isTablet, isMobile } = useScreenSize();
   const [educationCard, setEducationCard] = useState(0);
   const [isMailOpen, setIsMailOpen] = useState(false);
   const [isPlayMarquee, setIsPlayMarquee] = useState(true);
@@ -31,9 +31,9 @@ const Home = () => {
       <div id="EssenceSection" className={`w-full h-screen flex flex-col relative font-metropolis scroll-smooth`}>
         <div className="w-full h-[20%] flex bg-secondary  px-8 relative items-center z-20">
           <div className="text-primary flex flex-col gap-3">
-            <p className={`text-base xs:text-xl lg:text-4xl font-bold uppercase font-moderniz`}>Hola, I'm Glenn 👋🏼</p> 
+            <p className={`text-base xs:text-xl md:text-4xl font-bold uppercase font-moderniz`}>Hola, I'm Glenn 👋🏼</p> 
             <div className={`flex`}>
-              <div className={`bg-third text-xs xs:text-sm lg:text-base 2xl:text-base flex gap-2.5 rounded-full px-4 py-2 border-2 border-secondary shadow-lg shadow-primary/80 text-white font-medium ${geistMono.className}`}>
+              <div className={`bg-third text-xs xs:text-sm md:text-base 2xl:text-base flex gap-2.5 rounded-full px-4 py-2 border-2 border-secondary shadow-lg shadow-primary/80 text-white font-medium ${geistMono.className}`}>
                 <p className="ml-0.5">🧑🏻‍💻</p>
                 <div>
                   <Typewriter
@@ -51,12 +51,12 @@ const Home = () => {
           </div>
         </div>
         <div className={`relative flex flex-col gap-12 lg:flex-row lg:justify-between lg:items-center w-full h-[80%] lg:h-[54%] py-10`}>
-          <div className="bg-thirdAlternative border-2 border-secondary absolute bottom-[31%] rotate-45 lg:bottom-auto lg:top-[2.4rem] lg:-rotate-[45.2deg] -left-[4rem] z-[70] lg:z-10 w-56 text-center py-2">
+          <div className="bg-thirdAlternative border-2 border-secondary absolute -left-[4rem] bottom-[31%] xs:bottom-[30%] sm:bottom-[29.8%] sm:-left-[3.4rem] rotate-45 lg:-left-[4rem] lg:bottom-auto lg:top-[2.4rem] lg:-rotate-[45.2deg] z-[70] lg:z-10 w-56 sm:w-60 text-center py-2">
             <p className={`text-secondary font-bold uppercase text-xs`}>Open to Work</p>
           </div>
-          <div className="flex flex-col gap-4 w-full md:w-1/2 px-6 lg:pr-0 lg:pl-12">
-            <p className="font-extrabold text-5xl lg:text-6xl text-secondary text-center lg:text-start -z-10">WHO AM I?</p>
-            <p className="font-light text-center text-xs xs:text-sm lg:text-start">Third-year Informatics student at Syiah Kuala University, specializing in full-stack web development with a growing passion for machine learning innovations. Through startup internships and team-driven projects, I've enhanced my technical acumen and developed a forward-thinking approach to collaboration. Try to bridging the gap between robust web solutions and AI-driven technologies.</p>
+          <div className="flex flex-col gap-4 w-full lg:w-1/2 px-6 sm:px-16 lg:pr-0 lg:pl-12">
+            <p className="font-extrabold text-5xl md:text-6xl text-secondary text-center lg:text-start -z-10">WHO AM I?</p>
+            <p className="font-light text-center text-xs xs:text-sm md:text-base lg:text-sm lg:text-start">Third-year Informatics student at Syiah Kuala University, specializing in full-stack web development with a growing passion for machine learning innovations. Through startup internships and team-driven projects, I've enhanced my technical acumen and developed a forward-thinking approach to collaboration. Try to bridging the gap between robust web solutions and AI-driven technologies.</p>
             {isDesktop && ( 
               <div className="flex flex-col gap-4 mt-6 -mb-10">
                 <p className="font-extrabold text-2xl uppercase">Main Tech</p>
@@ -87,7 +87,7 @@ const Home = () => {
               className="object-contain"
             />
           </div>
-          {isMobile && (
+          {(isMobile || isTablet) && (
             <Marquee className="lg:absolute lg:bottom-0 left-0 flex gap-8 items-center py-4 w-full -z-20" direction="left" speed={80}>
              <div className={`flex gap-8 font-moderniz text-primary items-center`}>               
               <p className="font-extrabold text-lg xs:text-2xl uppercase text-white">Main Tech</p>
@@ -130,7 +130,7 @@ const Home = () => {
           </button>
           <Marquee play={isPlayMarquee} className="w-full h-full overflow-y-hidden" speed={60} direction="left">
            <div id="EducationAndHimpunan" className="flex gap-4 text-8xl font-bold relative mx-8 lg:mx-11">
-             <div onMouseOver={() => isDesktop && setEducationCard(1)} onClick={() => isMobile && setEducationCard(1)} className={`${educationCard !== 1 ? '-z-10' : 'z-10'} active:scale-110 lg:active:scale-110 lg:hover:scale-110 duration-200 cursor-pointer px-7 h-[6.2rem] xs:h-32 absolute top-0 -left-20 border flex items-center bg-primary border-white/30 shadow-md shadow-black rounded-full gap-4`}>
+             <div onMouseOver={() => isDesktop && setEducationCard(1)} onClick={() => (isTablet || isMobile) && setEducationCard(1)} className={`${educationCard !== 1 ? '-z-10' : 'z-10'} active:scale-110 lg:hover:scale-110 duration-200 cursor-pointer px-7 h-[6.2rem] xs:h-32 absolute top-0 -left-20 border flex items-center bg-primary border-white/30 shadow-md shadow-black rounded-full gap-4`}>
                <Image
                  src="https://utfs.io/f/WjLJ1ngIOkg6Ar4qtwAKIKFQvR98o1bMXDBnGsuVfzx4Lal2"
                  alt="logo-hmif-usk"
@@ -147,7 +147,7 @@ const Home = () => {
                  </div>
                </div>    
              </div>          
-             <div onMouseOver={() => setEducationCard(0)} onClick={() => isMobile && setEducationCard(0)} className={`active:scale-110 lg:active:scale-110 lg:hover:scale-110 duration-200 cursor-pointer px-7 h-[6.2rem] xs:h-32 border bg-primary border-white/30 shadow-md shadow-black rounded-full flex gap-4 items-center`}>
+             <div onMouseOver={() => isDesktop && setEducationCard(0)} onClick={() => (isTablet || isMobile) && setEducationCard(0)} className={`active:scale-110 lg:hover:scale-110 duration-200 cursor-pointer px-7 h-[6.2rem] xs:h-32 border bg-primary border-white/30 shadow-md shadow-black rounded-full flex gap-4 items-center`}>
                <div className="flex gap-1.5">
                 <Image
                  src="https://utfs.io/f/WjLJ1ngIOkg6ftAbS2oELJFSPCZ4eO06HwqphaMBGjQY9Avr"
@@ -215,7 +215,7 @@ const Home = () => {
                  size={1.16}
                />
              )}
-             {isMobile && (
+             {(isTablet || isMobile) && (
                <CircularText 
                  text="Let’s build something amazing! • " 
                  spacing={1.06}
@@ -223,7 +223,7 @@ const Home = () => {
                />
              )}
              <Link href={"#ContactSection"} onMouseOver={() => setIsMailOpen(true)} onMouseLeave={() => setIsMailOpen(false)} className="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 border border-secondary p-5 xs:p-6 lg:p-7 rounded-full shadow-md shadow-black lg:hover:bg-secondary duration-300">
-               {isMailOpen ? (
+               {(isMailOpen && isDesktop) ? (
                  <MailOpen className="text-primary w-6 h-6 xs:w-8 xs:h-8"/>
                ) : (
                  <Mail className="w-6 h-6 xs:w-8 xs:h-8 text-secondary"/>
@@ -247,8 +247,8 @@ const Home = () => {
           <p>PROJECTS</p>
         </div>
        </Marquee>  
-       <div className="w-full h-full lg:p-12 flex overflow-x-hidden lg:overflow-x-scroll gap-8 no-scrollbar overflow-y-hidden">
-        {isDesktop && projects.map((project) => (
+       <div className="w-full h-full sm:p-16 lg:p-12 flex overflow-x-hidden sm:overflow-x-scroll gap-8 no-scrollbar overflow-y-hidden">
+        {(isDesktop || isTablet) && projects.map((project) => (
           <ProjectsCard key={project.id} project={project}/>
         ))}
         {isMobile && (
@@ -277,7 +277,7 @@ const Home = () => {
         </p>
         <div className="lg:w-fit h-fit gap-8 flex flex-wrap w-[100%] justify-center">
           {contacts.map((contact, index) => (
-            <Link key={index} href={contact.url} target="_blank" className={`bg-secondary hover:scale-110 duration-200 shadow-balance shadow-secondary hover:shadow-third w-16 h-16 xs:w-20 xs:h-20 lg:w-36 lg:h-36 flex justify-center items-center rounded-full`}>
+            <Link key={index} href={contact.url} target="_blank" className={`bg-secondary lg:hover:scale-110 duration-200 shadow-balance shadow-secondary lg:hover:shadow-third w-16 h-16 xs:w-20 xs:h-20 lg:w-36 lg:h-36 flex justify-center items-center rounded-full`}>
               {contact.icon}
             </Link>
           ))}

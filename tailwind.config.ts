@@ -37,6 +37,7 @@ const config: Config = {
       },
       screens: {
         "xs": "376px",
+        "md": "769px",
         "lg": "1025px",
       },
       fontFamily: {

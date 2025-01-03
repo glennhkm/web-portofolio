@@ -69,12 +69,12 @@ export const ProjectsCard = ({ project }: ProjectsCardProps) => {
                 />
             )}
         </div>
-        <h4 className={`${oswald.className} font-extrabold text-2xl xs:text-5xl lg:text-[4.2rem] lg:leading-none tracking-tight lg:pt-2`}>{project.title}</h4>
+        <h4 className={`${oswald.className} font-extrabold text-2xl xs:text-5xl sm:text-6xl md:text-8xl lg:text-[4.2rem] lg:leading-none tracking-tight lg:pt-2`}>{project.title}</h4>
         <div className='w-full flex flex-col lg:justify-between lg:flex-row lg:items-end gap-6'>
-            <p className={`${selectedVariant?.desc_color} text-[0.64rem] xs:text-[0.68rem] lg:text-sm w-full lg:w-[46%]`}>{project.description}</p>
-            <div className='flex flex-col gap-3'>
+            <p className={`${selectedVariant?.desc_color} text-[0.64rem] xs:text-[0.68rem] sm:text-sm md:text-base lg:text-sm w-full lg:w-[46%]`}>{project.description}</p>
+            <div className='flex flex-col flex-wrap gap-3'>
                 <p className='font-bold -mb-2 text-sm xs:text-base'>TECH STACK</p>
-                <div className={`w-fit bg-primary shadow-md shadow-black/40 flex gap-4 font-medium text-secondary text-[0.58rem] xs:text-[0.7rem] lg:text-xs px-6 py-2.5 rounded-full ${selectedVariant?.techStackBorder}`}>
+                <div className={`w-fit bg-primary shadow-md shadow-black/40 flex flex-wrap gap-4 font-medium text-secondary text-[0.54rem] xs:text-[0.64rem] md:text-sm lg:text-xs px-6 py-2.5 rounded-full ${selectedVariant?.techStackBorder}`}>
                     {project.techStack.map((tech, index) => (
                         <p key={index}>{tech}</p>
                     ))}
