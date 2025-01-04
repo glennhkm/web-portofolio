@@ -37,7 +37,7 @@ const Home = () => {
                 <p className="ml-0.5">🧑🏻‍💻</p>
                 <div>
                   <Typewriter
-                    words={['Full-stack Web Developer', 'Machine Learning Enthusiast']}
+                    words={['Web Developer in the Arena', 'Machine Learning Enthusiast']}
                     loop={0}
                     cursor
                     cursorStyle='|'
@@ -56,7 +56,7 @@ const Home = () => {
           </div>
           <div className="flex flex-col gap-4 w-full lg:w-1/2 px-6 sm:px-16 lg:pr-0 lg:pl-12">
             <p className="font-extrabold text-5xl md:text-6xl text-secondary text-center lg:text-start -z-10">WHO AM I?</p>
-            <p className="font-light text-center text-xs xs:text-sm md:text-base lg:text-sm lg:text-start">Third-year Informatics student at Syiah Kuala University, specializing in full-stack web development with a growing passion for machine learning innovations. Through startup internships and team-driven projects, I've enhanced my technical acumen and developed a forward-thinking approach to collaboration. Try to bridging the gap between robust web solutions and AI-driven technologies.</p>
+            <p className="font-light text-center text-xs xs:text-sm md:text-base lg:text-sm lg:text-start">Third-year Informatics student at Syiah Kuala University, specializing in web development with a growing passion for machine learning innovations. Through startup internships and team-driven projects, I've enhanced my technical acumen and developed a forward-thinking approach to collaboration. Try to bridging the gap between robust web solutions and AI-driven technologies.</p>
             {isDesktop && ( 
               <div className="flex flex-col gap-4 mt-6 -mb-10">
                 <p className="font-extrabold text-2xl uppercase">Main Tech</p>
