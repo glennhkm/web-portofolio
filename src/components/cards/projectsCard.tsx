@@ -11,7 +11,7 @@ interface ProjectsCardProps {
 }
 
 export const ProjectsCard = ({ project }: ProjectsCardProps) => {
-  const { isDesktop, isMobile } = useScreenSize()
+  const { isDesktop } = useScreenSize()
   const variants = [
     {
         name: 'primary',
@@ -50,7 +50,7 @@ export const ProjectsCard = ({ project }: ProjectsCardProps) => {
   const selectedVariant = variants.find((item) => item.name === project.cardVariant)
 
   return (
-    <div className={`w-[100%] lg:w-[80%] h-full ${selectedVariant?.card} rounded-3xl flex flex-col gap-6 justify-between lg:gap-2 flex-shrink-0 font-metropolis p-4 pb-6 lg:px-10 lg:py-9 shadow-lg shadow-black lg:overflow-y-auto card-scrollbar`}>
+    <div className={`w-[100%] lg:w-[80%] h-full ${selectedVariant?.card} rounded-3xl flex flex-col gap-6 justify-between lg:gap-2 flex-shrink-0 font-metropolis p-4 pb-6 lg:px-10 lg:py-9 shadow-lg shadow-black lg:overflow-y-auto thin-scrollbar`}>
         <div className='flex gap-4 justify-between'>
             <Image
                 src={project.image1}

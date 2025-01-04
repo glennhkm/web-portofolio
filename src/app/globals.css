@@ -34,28 +34,21 @@ body {
   scrollbar-width: none;  /* Firefox */
 }
 
-.card-scrollbar {
-  /* padding-right: 6px;
-  margin-right: -6px;  */
- }
- 
- .card-scrollbar::-webkit-scrollbar {
+ .thin-scrollbar::-webkit-scrollbar {
   width: 5px;
+  height: 5px;
  }
  
- .card-scrollbar::-webkit-scrollbar-track {
+ .thin-scrollbar::-webkit-scrollbar-track {
   background: rgba(255, 255, 255, 0.2);
   border-radius: 10px;
   width: 5px;
+  height: 5px;
  }
  
- .card-scrollbar::-webkit-scrollbar-thumb {
+ .thin-scrollbar::-webkit-scrollbar-thumb {
   background: rgba(255, 255, 255, 0.6);
   width: 5px;
+  height: 5px;
   border-radius: 10px;
  }
-
-/* primary: "#1d1d1d",
-        secondary: "#FFDE4D" ,
-        third: "#32a2b0",
-        thirdAlternative: "#255257", */

@@ -247,7 +247,7 @@ const Home = () => {
           <p>PROJECTS</p>
         </div>
        </Marquee>  
-       <div className="w-full h-full sm:p-16 lg:p-12 flex overflow-x-hidden sm:overflow-x-scroll gap-8 no-scrollbar overflow-y-hidden">
+       <div className="w-full h-full sm:p-16 lg:p-12 flex overflow-x-hidden sm:overflow-x-scroll gap-8 thin-scrollbar overflow-y-hidden">
         {(isDesktop || isTablet) && projects.map((project) => (
           <ProjectsCard key={project.id} project={project}/>
         ))}
@@ -277,7 +277,7 @@ const Home = () => {
         </p>
         <div className="lg:w-fit h-fit gap-8 flex flex-wrap w-[100%] justify-center">
           {contacts.map((contact, index) => (
-            <Link key={index} href={contact.url} target="_blank" className={`bg-secondary lg:hover:scale-110 duration-200 shadow-balance shadow-secondary lg:hover:shadow-third w-16 h-16 xs:w-20 xs:h-20 lg:w-36 lg:h-36 flex justify-center items-center rounded-full`}>
+            <Link key={index} href={contact.url} target="_blank" className={`bg-secondary lg:hover:scale-110 duration-200 shadow-balance shadow-secondary lg:hover:shadow-third w-16 h-16 xs:w-20 xs:h-20 lg:w-32 lg:h-32 flex justify-center items-center rounded-full`}>
               {contact.icon}
             </Link>
           ))}
