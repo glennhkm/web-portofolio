@@ -271,7 +271,7 @@ const Home = () => {
         </div>
        </Marquee>
        <div className="w-full h-full p-8 lg:p-12 flex flex-col justify-center items-center overflow-x-hidden lg:overflow-x-scroll gap-20 no-scrollbar overflow-y-hidden font-metropolis">
-        <h3 className="font-bold text-[2.96rem] lg:text-[5.25rem] leading-none">Get in Touch</h3>
+        <h3 className="font-bold text-[2.96rem] lg:text-[5.25rem] leading-none">Hit Me Up</h3>
         <p className="text-sm max-w-2xl text-center -mt-10">
           Explore the possibilities of collaboration and innovation together. Whether you have a project in mind, want to discuss technology, or just want to say hello - I'm always excited to connect with fellow creators and tech enthusiasts. Let's turn ideas into reality!
         </p>
