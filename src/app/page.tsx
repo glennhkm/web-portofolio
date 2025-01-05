@@ -257,7 +257,7 @@ const Home = () => {
        </div>
       </div>
       <div id="ContactSection" className="h-screen w-full flex flex-col">
-       <Marquee className="flex gap-8 bg-third items-center pt-5 pb-2.5 overflow-y-hidden" direction="right" speed={100}>
+       <Marquee className="flex gap-8 bg-third items-center pt-5 pb-2.5 overflow-y-hidden" direction="left" speed={100}>
         <div className={`text-4xl lg:text-7xl flex gap-8 font-moderniz text-white`}>
           <p>CONTACT</p>
           <p>CONTACT</p>
