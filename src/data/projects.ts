@@ -19,7 +19,7 @@ export const projects: Project[] = [
         image2: "https://utfs.io/f/WjLJ1ngIOkg6W7Z2bxCgIOkg6hwXEUlstTWujmAG1zYv8xLJ",
         techStack: ["Next JS", "Vercel"],
         github: "https://github.com/glennhkm/Diagnosa-Penyakit-Paru-paru",
-        url: "https://pulmohealth.glennhkm.me",
+        url: "https://pulmohealth.vercel.app",
         cardVariant: "thirdAlternative"
     },
     {
@@ -30,18 +30,18 @@ export const projects: Project[] = [
         image2: "https://utfs.io/f/WjLJ1ngIOkg63uvQHnwVZbCWEFH2TDkVjUlA7nOxGB5duQqf",
         techStack: ["Next JS", "CockroachDB", "Vercel"],
         github: "https://github.com/glennhkm/Culinary-E-Commerce",
-        url: "https://fashakuliner.glennhkm.me",
+        url: "https://fashakuliner.vercel.app/",
         cardVariant: "primary"
     },
     {
         id: 3,
-        title: "NBA NEWS SEARCH ENGINE WEBSITE",
+        title: "HOOPSTALK: SEARCH ENGINE WEBSITE",
         description: "This Search Engine uses WebSocket (Socket.IO) for real-time comparison of Cosine and Jaccard similarity in processing crawled data from nba.com/news, delivering precise and efficient NBA news retrieval.",
         image1: "https://utfs.io/f/WjLJ1ngIOkg6gfwtUMqTnAZ95QchX7jgJzVDHdUBP0SYa4fm",
         image2: "https://utfs.io/f/WjLJ1ngIOkg6BlUWJFRLGoST8Xy6cP5BInsEOe7ZC4rbuvU2",
         techStack: ["Next JS", "Flask", "Socket IO", "Mongo DB", "Netlify"],
         github: "https://github.com/glennhkm/NBA_News_Search_Engine",
-        url: "https://nba-ir.glennhkm.me",
+        url: "https://hoopstalk.netlify.app",
         cardVariant: "secondary"
     },
     {

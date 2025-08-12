@@ -50,7 +50,7 @@ const Home = () => {
             </div>           
           </div>
         </div>
-        <div className={`relative flex flex-col gap-12 lg:flex-row lg:justify-between lg:items-center w-full h-[80%] lg:h-[54%] py-10`}>
+        <div className={`relative flex flex-col gap-12 lg:flex-row lg:justify-between lg:items-center w-full h-[80%] lg:h-[54%] py-10 text-white`}>
           <div className="bg-thirdAlternative border-2 border-secondary absolute -left-[4rem] bottom-[31%] xs:bottom-[30%] sm:bottom-[29.8%] sm:-left-[3.4rem] rotate-45 lg:-left-[4rem] lg:bottom-auto lg:top-[2.4rem] lg:-rotate-[45.2deg] z-[70] lg:z-10 w-56 sm:w-60 text-center py-2">
             <p className={`text-secondary font-bold uppercase text-xs`}>Open to Work</p>
           </div>
@@ -128,7 +128,7 @@ const Home = () => {
               <Play className="text-primary w-4 h-4"/>
             )}
           </button>
-          <Marquee play={isPlayMarquee} className="w-full h-full overflow-y-hidden" speed={60} direction="left">
+          <Marquee play={isPlayMarquee} className="w-full h-full overflow-y-hidden text-white" speed={60} direction="left">
            <div id="EducationAndHimpunan" className="flex gap-4 text-8xl font-bold relative mx-8 lg:mx-11">
              <div onMouseOver={() => isDesktop && setEducationCard(1)} onClick={() => (isTablet || isMobile) && setEducationCard(1)} className={`${educationCard !== 1 ? '-z-10' : 'z-10'} active:scale-110 lg:hover:scale-110 duration-200 cursor-pointer px-7 h-[6.2rem] xs:h-32 absolute top-0 -left-20 border flex items-center bg-primary border-white/30 shadow-md shadow-black rounded-full gap-4`}>
                <Image
@@ -168,7 +168,7 @@ const Home = () => {
                  <p className={`font-bold text-[0.68rem] xs:text-xs lg:text-sm`}>Syiah Kuala University</p>
                  <div className="h-[1px] w-full bg-white/20 my-0.5 xs:my-1 lg:my-0.5"></div>
                  <p className="text-[0.66rem] lg:text-xs font-bold">Informatics <span className="font-light text-[0.66rem] lg:text-xs">Bachelor Degree</span></p>
-                 <p className="text-[0.66rem] lg:text-xs font-light">Last GPA: <span className="font-bold">3.44 / 4</span></p>
+                 <p className="text-[0.66rem] lg:text-xs font-light">Last GPA: <span className="font-bold">3.52 / 4</span></p>
                </div>    
              </div>            
            </div>
@@ -257,7 +257,7 @@ const Home = () => {
        </div>
       </div>
       <div id="ContactSection" className="h-screen w-full flex flex-col">
-       <Marquee className="flex gap-8 bg-third items-center pt-5 pb-2.5 overflow-y-hidden" direction="left" speed={100}>
+       <Marquee className="flex gap-8 bg-third items-center pt-5 pb-2.5 overflow-y-hidden"  direction="left" speed={100}>
         <div className={`text-4xl lg:text-7xl flex gap-8 font-moderniz text-white`}>
           <p>CONTACT</p>
           <p>CONTACT</p>
@@ -270,7 +270,7 @@ const Home = () => {
           <p>CONTACT</p>
         </div>
        </Marquee>
-       <div className="w-full h-full p-8 lg:p-12 flex flex-col justify-center items-center overflow-x-hidden lg:overflow-x-scroll gap-20 no-scrollbar overflow-y-hidden font-metropolis">
+       <div className="w-full h-full p-8 lg:p-12 flex flex-col justify-center items-center overflow-x-hidden lg:overflow-x-scroll gap-20 no-scrollbar overflow-y-hidden font-metropolis text-white">
         <h3 className="font-bold text-[2.96rem] lg:text-[5.25rem] leading-none">Hit Me Up</h3>
         <p className="text-sm max-w-2xl text-center -mt-10">
           Explore the possibilities of collaboration and innovation together. Whether you have a project in mind, want to discuss technology, or just want to say hello - I'm always excited to connect with fellow creators and tech enthusiasts. Let's turn ideas into reality!

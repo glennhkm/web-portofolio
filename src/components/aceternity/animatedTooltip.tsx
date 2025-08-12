@@ -118,7 +118,7 @@ export const AnimatedTooltip = ({
                       top: tooltipPosition.y - 122,
                       transform: "translateX(-50%)",
                     }}
-                    className="flex text-xs flex-col gap-2 rounded-3xl bg-black/90 border-[1.2px] border-third shadow-md shadow-black px-4 pt-4 pb-2 w-max z-[100] font-metropolis"
+                    className="flex text-white text-xs flex-col gap-2 rounded-3xl bg-black/90 border-[1.2px] border-third shadow-md shadow-black px-4 pt-4 pb-2 w-max z-[100] font-metropolis"
                   >
                     <div className="flex gap-4 items-center">
                       <Image
