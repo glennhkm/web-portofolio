@@ -115,7 +115,7 @@ export const ProjectsCard = ({ project }: ProjectsCardProps) => {
 
   return (
     <div
-      className={`${v.card} rounded-2xl ipad-horizontal:rounded-2xl lg:rounded-3xl overflow-hidden flex flex-col font-metropolis shadow-xl shadow-black/30 h-full relative`}
+      className={`${v.card} rounded-2xl ipad-horizontal:rounded-2xl lg:rounded-3xl overflow-hidden flex flex-col font-metropolis shadow-xl shadow-black/30 relative`}
     >
       {project.category === "Award-Winning Projects" && awardLabel && (
         <div className="absolute top-3 right-0 z-20 max-w-[88%]">
