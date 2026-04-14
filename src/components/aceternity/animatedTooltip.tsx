@@ -82,14 +82,14 @@ export const AnimatedTooltip = ({
             onMouseEnter={(e) => handleMouseEnter(e, item.id, itemRef)}
             onMouseLeave={() => setHoveredIndex(null)}
           >
-            <div className="group-hover:scale-105 group-hover:z-30 border-[1.2px] border-third rounded-3xl shadow-md shadow-black relative transition duration-200 p-4 group-hover:bg-black">
+            <div className="group-hover:scale-105 group-hover:z-30 border-[1.2px] border-third rounded-2xl ipad-horizontal:rounded-2xl lg:rounded-3xl shadow-md shadow-black relative transition duration-200 p-3 ipad-horizontal:p-3 lg:p-3.5 xl:p-4 group-hover:bg-black">
               <Image
                 onMouseMove={handleMouseMove}
                 src={item.logo}
                 alt={item.company}
                 width={500}
                 height={500}
-                className="object-contain w-8 h-8 lg:w-12 lg:h-12"
+                className="object-contain w-6 h-6 sm:w-8 sm:h-8 ipad-horizontal:w-7 ipad-horizontal:h-7 lg:w-9 lg:h-9 xl:w-10 xl:h-10 2xl:w-12 2xl:h-12"
               />
             </div>
 

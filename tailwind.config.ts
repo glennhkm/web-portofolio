@@ -37,8 +37,13 @@ const config: Config = {
       },
       screens: {
         "xs": "376px",
-        "md": "769px",
-        "lg": "1025px",
+        "sm": "640px",
+        "md": "768px",
+        "ipad-vertical": "768px",
+        "ipad-horizontal": "1238px",
+        "lg": "1400px",
+        "xl": "1536px",
+        "2xl": "2560px",
       },
       fontFamily: {
         geistSans: "var(--font-geist-sans)",

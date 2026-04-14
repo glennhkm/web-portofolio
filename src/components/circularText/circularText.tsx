@@ -36,7 +36,7 @@ const CircularText: React.FC<CircularTextProps> = ({
     };
 
     return (
-        <div className="relative min-h-[250px] aspect-square grid place-items-center">
+        <div className="relative min-h-[170px] xs:min-h-[190px] sm:min-h-[210px] ipad-horizontal:min-h-[190px] lg:min-h-[220px] xl:min-h-[250px] 2xl:min-h-[280px] aspect-square grid place-items-center">
             <h1 
                 className="relative text-base uppercase font-metropolis animate-spin-slow"
                 style={ h1Style }
@@ -44,7 +44,7 @@ const CircularText: React.FC<CircularTextProps> = ({
                 {chars.map((char, index) => (
                     <span
                         key={index}
-                        className="absolute top-1/2 left-1/2 inline-block text-[0.68rem] xs:text-sm text-secondary"
+                        className="absolute top-1/2 left-1/2 inline-block text-[0.56rem] xs:text-[0.62rem] sm:text-xs ipad-horizontal:text-[0.65rem] lg:text-xs xl:text-sm 2xl:text-base text-secondary"
                         aria-hidden="true"
                         style={{
                             transform: `translate(-50%, -50%) rotate(${getRotation(index, chars.length)}deg) translateY(${getRadius(chars.length)})`

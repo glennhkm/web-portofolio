@@ -1,4 +1,3 @@
-import { projects } from '@/data/projects';
 import { ProjectsCard } from '../cards/projectsCard';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectCards, Pagination } from "swiper/modules";
@@ -7,8 +6,13 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/effect-cards";
 import { CustomCSSProperties } from '@/types/customCSSProperties';
+import type { Project } from '@/lib/db/queries';
 
-export const ProjectsSwiper = () => {
+interface ProjectsSwiperProps {
+  projects: Project[];
+}
+
+export const ProjectsSwiper = ({ projects }: ProjectsSwiperProps) => {
   const projectsSwiperStyles: CustomCSSProperties  = {
     "--swiper-pagination-color": "#FFFFFF",
     "--swiper-pagination-bullet-inactive-color": "#FFFFFF",

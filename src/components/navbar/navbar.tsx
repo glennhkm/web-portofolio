@@ -4,7 +4,7 @@ import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 
 export const Navbar = () => {
-  const { isDesktop, isMobile, isTablet } = useScreenSize();
+  const { isMobile } = useScreenSize();
   const [isOpen, setIsOpen] = useState(false)
   const [isVisible, setIsVisible] = useState(true);
 
@@ -37,8 +37,8 @@ export const Navbar = () => {
 
   return (
     <>
-    {isDesktop && (
-      <div className={`flex gap-6 fixed text-sm font-metropolis bg-primary shadow-balance shadow-third text-white font-semibold items-center left-1/2 -translate-x-1/2 z-[100] top-6 px-7 rounded-full py-2.5 transition-all duration-300 ${isVisible ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"} `}>
+    {!isMobile && (
+      <div className={`flex gap-4 sm:gap-5 ipad-horizontal:gap-6 lg:gap-6 fixed text-xs sm:text-sm font-metropolis bg-primary shadow-balance shadow-third text-white font-semibold items-center left-1/2 -translate-x-1/2 z-[100] top-4 sm:top-5 lg:top-6 px-5 sm:px-6 lg:px-7 rounded-full py-2 sm:py-2.5 transition-all duration-300 ${isVisible ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"} `}>
         {menuItems.map((item, index) => (
           <Link key={index} href={item.link} className={`hover:scale-[1.08] duration-200 `}>
             {item.name}

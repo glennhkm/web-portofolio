@@ -1,9 +1,9 @@
 import React from 'react'
 
-export const Footer = () => {
+export const Footer = ({ text }: { text?: string }) => {
   return (
     <div className='w-full h-10 flex justify-center items-center bg-secondary font-metropolis text-xs  text-primary'>
-      © 2025 Glenn Hakim. All rights reserved
+      {text || '© 2025 Glenn Hakim. All rights reserved'}
     </div>
   )
 }
