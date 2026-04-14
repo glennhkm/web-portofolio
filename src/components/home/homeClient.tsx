@@ -6,7 +6,6 @@ import CircularText from "@/components/circularText/circularText";
 import { LeaderIcon } from "@/components/icons/leader";
 import { Navbar } from "@/components/navbar/navbar";
 import { useScreenSize } from "@/hooks/screenSizeValidation";
-import { geistMono } from "@/lib/fonts/getFonts";
 import {
   ArrowRight,
   Mail,
@@ -31,6 +30,7 @@ import type {
   SiteContent,
   Education,
 } from "@/lib/db/queries";
+import { useRouter } from "next/navigation";
 
 interface HomeClientProps {
   projects: Project[];
@@ -45,6 +45,7 @@ const HomeClient = ({
   workExperiences,
   siteContent,
 }: HomeClientProps) => {
+  const router = useRouter();
   const { isMobile, isTablet, isIpadHorizontal, isDesktop, isUltraWide } = useScreenSize();
   const isLargeScreen = isDesktop || isUltraWide;
   const isNotMobile = !isMobile;
@@ -172,7 +173,9 @@ const HomeClient = ({
             <div className="flex gap-3 sm:gap-4 mt-2 sm:mt-3 justify-center ipad-horizontal:justify-start lg:justify-start">
               {siteContent.cvUrl && (
                 <button
-                  onClick={() => setIsCvOpen(true)}
+                  onClick={() => {
+                    isDesktop ? setIsCvOpen(true) : router.push(siteContent.cvUrl);
+                  }}
                   className="group flex items-center gap-2 sm:gap-2.5 bg-secondary hover:bg-secondary/90 text-primary font-semibold text-xs sm:text-sm px-4 sm:px-5 py-2.5 sm:py-3 rounded-full shadow-lg shadow-secondary/30 hover:shadow-secondary/50 transition-all duration-300 hover:scale-[1.03] active:scale-[0.98]"
                 >
                   <FileText className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
@@ -180,7 +183,7 @@ const HomeClient = ({
                 </button>
               )}
               <Link
-                href="#ProjectsSection"
+                href="#ContactSection"
                 className="group flex items-center gap-2 sm:gap-2.5 bg-white/5 hover:bg-white/10 text-white border border-white/20 hover:border-white/40 font-semibold text-xs sm:text-sm px-4 sm:px-5 py-2.5 sm:py-3 rounded-full transition-all duration-300 hover:scale-[1.03] active:scale-[0.98]"
               >
                 Find Me
